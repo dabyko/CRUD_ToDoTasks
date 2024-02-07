@@ -59,14 +59,40 @@ body{
 
 .container
 {
-    
+    display: flex;
+    gap: 50px;
 }
 
-.post_form>*:not(:last-child){
+.task_form>*:not(:last-child){
     margin-bottom: 20px;
 }
 
-.post_form{
+.task_form{
     display: flex;
     flex-direction: column;
+}
+
+.options{
+    display: flex;
+    gap: 20px;
+}
+
+#tasks{
+    width: 250px;
+    padding-top: 20px;
+}
+
+#tasks div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#tasks div:not(:last-child){
+    margin-bottom: 20px;
+}
+
+.options i 
+{
+    cursor: pointer;
 }
