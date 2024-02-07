@@ -96,3 +96,7 @@ body{
 {
     cursor: pointer;
 }
+
+#message{
+    color: red;
+}
