@@ -34,9 +34,22 @@ let createTask = () => {
     `<div>
         <p>${data.text}</p>
             <span class="options">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-trash-alt"></i>
+                <i onClick="editTask(this)" class="fas fa-edit"></i>
+                <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
             </span>
     </div>`;
+
+    inputField.value = "";
+};
+
+
+
+let deleteTask = (curObj) =>{
+    curObj.parentElement.parentElement.remove();
+};
+
+let editTask = (curObj) =>{
+    inputField.value = curObj.parentElement.previousElementSibling.innerHTML;
+    curObj.parentElement.parentElement.remove();
 };
 
