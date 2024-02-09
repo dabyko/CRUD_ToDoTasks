@@ -10,9 +10,8 @@
     <title>ToDo</title>
 </head>
 <body>
-    <h1>ToDo App</h1>
     <div class="container">
-        <div class="left">
+        <!-- <div class="left">
             <form id="form" class="task_form">
                 <p>Write a new task below:</p>
                 <textarea name="" id="input" cols="30" rows="10"></textarea>
@@ -25,7 +24,30 @@
             <div id="tasks">
                 
             </div>
+        </div> -->
+
+        <h4>ToDo App</h4>
+
+        <div id="addTask">
+            <span>Add new Task:</span>
+            <i class="fas fa-plus"></i>
         </div>
+
+        <h5>Task list:</h5>
+
+        <div id="taskList">
+            <div class="taskItem">
+                <span>Task 1</span>
+                <span>09.02.2024</span>
+                <p>to make project</p>
+
+                <span class="options">
+                    <i onClick="editTask(this)" class="fas fa-edit"></i>
+                    <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
+                </span>
+            </div>
+        </div>
+        
     </div>
 
     <script src="scripts.js"></script>

@@ -57,10 +57,10 @@ body{
     margin: 0 50px;
 }
 
-.container
+/* .container
 {
     display: flex;
-    gap: 50px;
+    flex-direction: column;
 }
 
 .task_form>*:not(:last-child){
@@ -99,4 +99,49 @@ body{
 
 #message{
     color: red;
+} */
+
+.container
+{
+    width: 300px;
+    height: 500px;
+    border: 5px solid #abcea1;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+#addTask{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    background-color: rgba(171, 206, 161, 0.35);
+    cursor: pointer;
+}
+
+.fa-plus{
+    background-color: #abcea1;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+#taskList
+{
+    display: grid;
+    gap: 15px;
+}
+
+#taskList div{
+    background-color: #e2eede;
+    border: 3px solid #abcea1;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.taskItem{
+
 }
