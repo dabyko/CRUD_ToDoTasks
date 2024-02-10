@@ -12,20 +12,6 @@
 </head>
 <body>
     <div class="app">
-        <!-- <div class="left">
-            <form id="form" class="task_form">
-                <p>Write a new task below:</p>
-                <textarea name="" id="input" cols="30" rows="10"></textarea>
-                <div id="message"></div>
-                <button type="submit">Add task</button>
-            </form>
-        </div>
-        <div class="right">
-            <h3>List of added tasks</h3>
-            <div id="tasks">
-                
-            </div>
-        </div> -->
 
         <h4 class="mb-3">ToDo App</h4>
 
@@ -47,6 +33,7 @@
                     <div class="modal-body">
                             <p>Task Title</p>
                             <input class="form-control" type="text" name="" id="taskName">
+                            <div id="msg"></div>
 
                             <p>Due Date</p>
                             <input class="form-control" type="date" name="" id="taskDate">
@@ -56,7 +43,7 @@
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-primary" id="addBtn">Add</button>
                     </div>
                 </div>
             </div>
@@ -70,7 +57,7 @@
                 <p>to make project</p>
 
                 <span class="options">
-                    <i onClick="editTask(this)" class="fas fa-edit"></i>
+                    <i onClick="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fas fa-edit"></i>
                     <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
                 </span>
             </div>
