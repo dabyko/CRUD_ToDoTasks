@@ -71,13 +71,12 @@ let formValidation = ()=>{
         msg.innerHTML = "Title can not be blank";
     }
     else{
-        console.log('success');
         msg.innerHTML = "";
         acceptData();
 
         addBtn.setAttribute("data-bs-dismiss", "modal");
         addBtn.click();
-
+        
         //IIFE
         (()=>{
             addBtn.setAttribute("data-bs-dismiss", "");
@@ -85,29 +84,40 @@ let formValidation = ()=>{
     }
 };
 
-let data = {};
+let data = [];
 
 let acceptData = () =>{
-    data["taskName"] = taskNameInput.value;
-    data["taskDate"] = taskDateInput.value;
-    data["taskDescription"] = taskDescriptionInput.value;
+    data.push({
+        taskName: taskNameInput.value,
+        taskDate: taskDateInput.value,
+        taskDescription: taskDescriptionInput.value,
+    });
+
+    localStorage.setItem("taskList", JSON.stringify(data));
 
     addTask();
 };
 
-let addTask = () =>{
-    taskList.innerHTML += `
-    <div class="taskItem">
-        <span class="fw-bold">${data.taskName}</span>
-        <span class="small text-secondary">${data.taskDate}</span>
-        <p>${data.taskDescription}</p>
 
-        <span class="options">
-            <i onClick="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fas fa-edit"></i>
-            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
-        </span>
-    </div>
-    `;
+let addTask = () =>{
+
+    taskList.innerHTML= "";
+
+    data.map((x,y)=>{
+
+        return (taskList.innerHTML += `
+        <div class="taskItem" id=${y}>
+            <span class="fw-bold">${x.taskName}</span>
+            <span class="small text-secondary">${x.taskDate}</span>
+            <p>${x.taskDescription}</p>
+    
+            <span class="options">
+                <i onClick="editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fas fa-edit"></i>
+                <i onClick="deleteTask(this);addTask()" class="fas fa-trash-alt"></i>
+            </span>
+        </div>
+        `);
+    });
 
     clearForm();
 };
@@ -120,6 +130,8 @@ let clearForm = () =>{
 
 let deleteTask = (curObj) =>{
     curObj.parentElement.parentElement.remove();
+    data.splice(curObj.parentElement.parentElement.id, 1);
+    localStorage.setItem("taskList", JSON.stringify(data));
 };
     
 let editTask = (curObj) =>{
@@ -129,5 +141,15 @@ let editTask = (curObj) =>{
     taskDateInput.value = selectedTask.children[1].innerHTML;
     taskDescriptionInput.value = selectedTask.children[2].innerHTML;
     
-    selectedTask.remove();
+    deleteTask(curObj);
 };
+let count = 0;
+(()=>{
+    count++;
+    data = JSON.parse(localStorage.getItem("taskList")) || [];
+    addTask();
+})();
+
+
+
+
