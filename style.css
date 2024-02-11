@@ -61,50 +61,6 @@ body{
     align-items: center;
 }
 
-/* .container
-{
-    display: flex;
-    flex-direction: column;
-}
-
-.task_form>*:not(:last-child){
-    margin-bottom: 20px;
-}
-
-.task_form{
-    display: flex;
-    flex-direction: column;
-}
-
-.options{
-    display: flex;
-    gap: 20px;
-}
-
-#tasks{
-    width: 250px;
-    padding-top: 20px;
-}
-
-#tasks div{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#tasks div:not(:last-child){
-    margin-bottom: 20px;
-}
-
-.options i 
-{
-    cursor: pointer;
-}
-
-#message{
-    color: red;
-} */
-
 .app
 {
     width: 300px;
