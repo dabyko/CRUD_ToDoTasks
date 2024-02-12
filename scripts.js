@@ -5,6 +5,7 @@ let taskDescriptionInput = document.getElementById("taskDescription");
 let msg = document.getElementById("msg");
 let taskList = document.getElementById("taskList");
 let addBtn = document.getElementById("addBtn");
+let closeBtn = document.getElementById("closeBtn");
 
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -27,6 +28,19 @@ const formValidation = ()=>{
             addBtn.setAttribute("data-bs-dismiss", "");
         })()
     }
+};
+
+
+const closeModal = ()=>{
+    if(taskNameInput.value != "")
+         acceptData();
+ 
+    closeBtn.setAttribute("data-bs-dismiss", "modal");
+    closeBtn.click();
+    
+    (()=>{
+        closeBtn.setAttribute("data-bs-dismiss", "");
+    })()
 };
 
 let data = [];
