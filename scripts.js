@@ -44,13 +44,28 @@ const closeModal = ()=>{
 };
 
 let data = [];
+let insertionIndex;
 
 const acceptData = () =>{
-    data.push({
-        taskName: taskNameInput.value,
-        taskDate: taskDateInput.value,
-        taskDescription: taskDescriptionInput.value,
-    });
+
+    if(insertionIndex === undefined)
+    {
+        data.push({
+            taskName: taskNameInput.value,
+            taskDate: taskDateInput.value,
+            taskDescription: taskDescriptionInput.value,
+        });   
+    }
+    else
+    {
+        data.splice(insertionIndex, 0, {
+            taskName: taskNameInput.value,
+            taskDate: taskDateInput.value,
+            taskDescription: taskDescriptionInput.value,
+        });
+
+        insertionIndex = undefined;
+    }
 
     localStorage.setItem("taskList", JSON.stringify(data));
 
@@ -95,6 +110,7 @@ const deleteTask = (curObj) =>{
     
 const editTask = (curObj) =>{
     let selectedTask = curObj.parentElement.parentElement;
+    insertionIndex = selectedTask.getAttribute("id");
 
     taskNameInput.value = selectedTask.children[0].innerHTML;
     taskDateInput.value = selectedTask.children[1].innerHTML;
